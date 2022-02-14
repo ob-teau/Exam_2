@@ -6,7 +6,7 @@
 /*   By: alice <acoinus@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:18:59 by alice             #+#    #+#             */
-/*   Updated: 2022/02/14 11:51:31 by alice            ###   ########.fr       */
+/*   Updated: 2022/02/14 18:49:21 by alice            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char *get_next_line(int fd)
 	static char	*rest;
 	t_info		f;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, f.save, 0) < 0)
-		ft_free(rest);
+		return (ft_free(rest));
 	f.x_r = 1;
 	while (!check_n(rest, '\n', 0) && f.x_r != 0)
 	{
