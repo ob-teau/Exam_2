@@ -6,7 +6,7 @@
 /*   By: alice <acoinus@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:18:59 by alice             #+#    #+#             */
-/*   Updated: 2022/02/13 19:20:48 by alice            ###   ########.fr       */
+/*   Updated: 2022/02/14 11:50:16 by alice            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	*ft_free(char *s)
 
 int	check_n(char *s, char c, int x)
 {
-//printf("****check_n****\n");
 	int	i = -1;
 
 	if (!s || (c != '\n' && c != '\0'))
@@ -36,7 +35,6 @@ int	check_n(char *s, char c, int x)
 
 char	*ft_join(char *s1, char *s2)
 {
-//printf("****join****\n");
 	char *s;
 	int	i = 0;
 	int	j = 0;
@@ -81,28 +79,22 @@ char	*ft_line(t_info *f, char *rest)
 
 char *get_next_line(int fd)
 {
-//printf("\n************GNL**************\n");
 	static char	*rest;
 	t_info		f;
-//printf("1\n");
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, f.save, 0) < 0)
 		ft_free(rest);
 	f.x_r = 1;
 	while (!check_n(rest, '\n', 0) && f.x_r != 0)
 	{
-//printf("check_n = 0\n");
 		f.x_r = read(fd, f.save, BUFFER_SIZE);
-//printf("read = [%s]\n", f.save);
 		if (f.x_r == -1)
 			return (ft_free(rest));
 		f.save[f.x_r] = '\0';
 		f.tmp = rest;
-//printf("rest = [%s]\n", rest);
 		rest = ft_join(f.tmp, f.save);
 		free(f.tmp);
 		if (rest == NULL)
 			return (NULL);
-//printf("rest + join = [%s]\n", rest);
 	}
 	rest = ft_line(&f, rest);
 	if (f.x_r == 0 && !rest && !f.line[0])
