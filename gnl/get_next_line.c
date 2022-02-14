@@ -6,7 +6,7 @@
 /*   By: alice <acoinus@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 16:18:59 by alice             #+#    #+#             */
-/*   Updated: 2022/02/14 11:50:16 by alice            ###   ########.fr       */
+/*   Updated: 2022/02/14 11:51:31 by alice            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ char *get_next_line(int fd)
 	return (f.line);
 }
 
-int	main(int ac, char **av)
+/*int	main(int ac, char **av)
 {
 	int	fd;
 	char *line;
@@ -117,5 +117,4 @@ int	main(int ac, char **av)
 		line = get_next_line(fd);
 	}
 	return (0);
-}
-
+}*/
