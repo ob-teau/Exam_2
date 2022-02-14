@@ -6,7 +6,7 @@
 /*   By: alice <acoinus@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 09:04:07 by alice             #+#    #+#             */
-/*   Updated: 2022/02/14 10:14:28 by alice            ###   ########.fr       */
+/*   Updated: 2022/02/14 11:53:56 by alice            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-
-
 
 typedef struct s_info
 {

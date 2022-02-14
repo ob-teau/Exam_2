@@ -6,7 +6,7 @@
 /*   By: alice <acoinus@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 09:05:36 by alice             #+#    #+#             */
-/*   Updated: 2022/02/14 11:32:36 by alice            ###   ########.fr       */
+/*   Updated: 2022/02/14 11:53:40 by alice            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	print_d(t_info *f, int	n)
 		print_d(*&f, n / 10);
 		ft_putchar(*&f, n % 10 + 48);
 	}
-//	ft_putchar(*&f, n + 48);
 	return (0);
 }
 
@@ -108,7 +107,7 @@ int	ft_printf(const char *format, ...)
 	return (f.ret);
 }
 
-int	main()
+/*int	main()
 {
 	int	a = 0;
 	int	b = 0;
@@ -120,4 +119,4 @@ int	main()
 	b = printf("(2 : print_s = [%s], print_d = [%d], print_x = [%x], ok)\n", s, n, n);
 	printf("1 = [%d], 2 = [%d]\n", a, b);
 	return (0);
-}
+}*/
