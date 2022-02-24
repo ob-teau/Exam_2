@@ -6,7 +6,7 @@
 /*   By: alice <acoinus@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 09:05:36 by alice             #+#    #+#             */
-/*   Updated: 2022/02/14 11:53:40 by alice            ###   ########.fr       */
+/*   Updated: 2022/02/24 11:07:00 by alice            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,16 @@ void	ft_putchar(t_info *f, char c)
 	return ;
 }
 
-int	print_s(t_info *f, char *s)
+void	print_s(t_info *f, char *s)
 {
 	int	i = -1;
 
-	if (!s)
-		return (-1);
 	while (s[++i])
 		ft_putchar(&*f, s[i]);
-	return	(0);
 }
 
-int	print_d(t_info *f, int	n)
+void	print_d(t_info *f, int	n)
 {
-	if (!n)
-		return (-1);
 	if (n < 0)
 	{
 		ft_putchar(*&f, '-');
@@ -46,16 +41,13 @@ int	print_d(t_info *f, int	n)
 		print_d(*&f, n / 10);
 		ft_putchar(*&f, n % 10 + 48);
 	}
-	return (0);
 }
 
-int	print_x(t_info *f, unsigned long long n, unsigned long long base, char *list)
+void	print_x(t_info *f, unsigned int n, int base, char *list)
 {
 	int	i = 0;
 	char	tab[99];
 
-	if (!n)
-		return (-1);
 	while (1)
 	{
 		tab[i++] = list[n % base];
@@ -65,21 +57,18 @@ int	print_x(t_info *f, unsigned long long n, unsigned long long base, char *list
 	}
 	while (i--)
 		ft_putchar(&*f, tab[i]);
-	return (0);
 }
 
-int	parse_format(t_info *f, char c, va_list va)
+void	parse_format(t_info *f, char c, va_list va)
 {
 	if (c == 's')
-		if (print_s(&*f, va_arg(va, char *)) == -1)
-			return (-1);
+		print_s(&*f, va_arg(va, char *));
 	if (c == 'd')
-		if (print_d(&*f, va_arg(va, int)) == -1)
-			return (-1);
+		print_d(&*f, va_arg(va, int));
 	if (c == 'x')
-		if (print_x(&*f, va_arg(va, unsigned int), 16, "0123456789abcdef") == -1)
-			return (-1);
-	return (0);
+		print_x(&*f, va_arg(va, unsigned int), 16, "0123456789abcdef");
+	else if (c != '%' && c != 's'&& c != 'd' && c != 'x')
+		ft_putchar(*&f, c);
 }
 
 int	ft_printf(const char *format, ...)
@@ -89,15 +78,13 @@ int	ft_printf(const char *format, ...)
 
 	va_start(va, format);
 	f.i = -1;
+	f.ret = 0;
 	if (!format)
 		return (0);
 	while (format[++f.i])
 	{
 		if (format[f.i] == '%')
-		{
-			if (parse_format(&f, format[++f.i], va) < 0)
-				return (-1);
-		}
+			parse_format(&f, format[++f.i], va);
 		else
 			ft_putchar(&f, format[f.i]);
 	}
@@ -114,9 +101,8 @@ int	ft_printf(const char *format, ...)
 	int	n = 12;
 	char *s = "bonjour, ca va ?";
 
-	a = ft_printf("(1 : print_s = [%s], print_d = [%d], print_x = [%x], ok)", s, n, n);
-	printf("\n");
-	b = printf("(2 : print_s = [%s], print_d = [%d], print_x = [%x], ok)\n", s, n, n);
+	a = ft_printf("1 : print_s = [%s], print_d = [%d], print_x = [%x]\n", s, n, n);
+	b = printf("2 : print_s = [%s], print_d = [%d], print_x = [%x]\n", s, n, n);
 	printf("1 = [%d], 2 = [%d]\n", a, b);
 	return (0);
 }*/
