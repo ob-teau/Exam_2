@@ -6,7 +6,7 @@
 /*   By: alice <acoinus@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 09:05:36 by alice             #+#    #+#             */
-/*   Updated: 2022/02/24 11:07:00 by alice            ###   ########.fr       */
+/*   Updated: 2022/02/24 23:25:27 by alice            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ void	print_d(t_info *f, int	n)
 {
 	if (n < 0)
 	{
-		ft_putchar(*&f, '-');
+		ft_putchar(&*f, '-');
 		n *= - 1;
 	}
 	if (n < 9)
-		ft_putchar(*&f, n + 48);
+		ft_putchar(&*f, n + 48);
 	if (n > 9)
 	{
-		print_d(*&f, n / 10);
-		ft_putchar(*&f, n % 10 + 48);
+		print_d(&*f, n / 10);
+		ft_putchar(&*f, n % 10 + 48);
 	}
 }
 
@@ -68,7 +68,7 @@ void	parse_format(t_info *f, char c, va_list va)
 	if (c == 'x')
 		print_x(&*f, va_arg(va, unsigned int), 16, "0123456789abcdef");
 	else if (c != '%' && c != 's'&& c != 'd' && c != 'x')
-		ft_putchar(*&f, c);
+		ft_putchar(&*f, c);
 }
 
 int	ft_printf(const char *format, ...)
